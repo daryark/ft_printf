@@ -6,70 +6,49 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/13 17:53:10 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/15 22:13:04 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
+#include <string.h>
+
+#define MAGENTA "\033[35m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
 
 // data->base_arr = {"0123456789", "01234567abcdef", "01234567ABCDEF"};
 
-// static int	ft_choose_format(t_printf *data)
-// {
-// 	char	*s;
-
-// 	s = data->curr_s;
-// 	while (*s == 'd' || *s == "i" || *s == 'u' || *s == 'x'
-// 		|| *s == 'X' || *s == 's' || *s == 'c' || *s == '%'
-// 		|| *s == 'p')
-// 	{
-// 		if (*s == 'd' || *s == 'i')
-// 			ft_print_num(va_arg(args, int), &s);
-// 		else if (*s == 'u')
-// 			ft_print_u(va_arg(args, unsigned), &s);
-// 		else if (*s == 'x' || *s == 'X')
-// 			ft_print_hex(va_arg(args, unsigned), &s);
-// 		else if (8s == 's')
-// 			ft_print_str(va_arg(args, char *), &s);
-// 		else if (*s == 'c' || *s == '%')
-// 			ft_print_str(va_arg(args, char), &s);
-// 		else if (*s == 'p')
-// 			ft_print_str(va_arg(args, void *), &s);
-// else if (*s == '%')
-// 			ft_print_str(va_arg(args, void *), &s);
-// 		else
-// 			return (1);
-// 		s++;
-// 	}
-// 	return (0);
-// }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list		args;
-	t_printf	data;
+	t_printf	*data;
 	int			err;
 
-	data = define_struct(s);
+	data = ft_define_struct(s);
 	va_start(args, s);
-	while (*data->curr_s)
+	while (data->curr_s)
 	{
-		if (*data->curr_s == '%')
+		if (*(data->curr_s) == '%')
 		{
 			data->curr_s++;
-			ft_flags_checker(&data);
-			// err = ft_choose_format(&data);
-			// if (err)
-			// 	return (-1);
+			ft_flags_checker(data);
+			err = ft_choose_format(data);
+			if (err)
+				return (-1);
 		}
 		else
 		{
+			write(STDOUT_FILENO, BLUE, strlen(BLUE));  
 			write(1, data->curr_s++, 1);
+    		write(STDOUT_FILENO, RESET, strlen(RESET));
 			data->len_printed++;
 		}
 	}
 	va_end(args);
-	return (len);
+	return (8);
 }
 
 // 
@@ -79,7 +58,11 @@ int	ft_printf(const char *s, ...)
 
 int    main(void)
 {
-
+	// ft_printf("S%-+90.10.20.4dE\n", 45);
+	// printf(MAGENTA"Native: S%-+90.10.20.4dE\n"RESET, 45);
+	// printf(MAGENTA"Native: %D, %x, %S,\n"RESET, 23, 53, "lasdkf");
+	ft_printf("S%-+90.10.20.4DE\n", 45);
+	// printf(MAGENTA"Native: S%-+90.10.20.4DE\n"RESET, 45);
 	// char	*s_test[20] = {"", " ", NULL, "hello", "hello\012newline", "hello\0nul", "hello\#flag", "nonprintables\v\f\b\t\a\\\r\'\n"};
 	// long	d_test[20] = { -1, INT_MIN, INT_MAX, 0, 2.9, 2.0, -9.9, 0xff, 010, (INT_MAX + 1), (INT_MIN - 1)}
 
@@ -87,6 +70,18 @@ int    main(void)
 // printf("S%.10.xE", 45);
 // printf("S%10.xE", 45);
 // printf("S%10xE", 45);
+// printf("S%5 19dE\n", 23);
+// printf("S%# 0$\n");
+// printf("S%# 0$\n", 32);
+// printf("S%# 0q\n");
+// printf("S%# 0q\n", 32);
+// printf("S%# 0qq\n");
+
+//*understand this fucking staff later
+// printf("S%# 0qq$§¶§•¶ª657657dfdasf\n");
+// printf("S%# 0qq657dfdasf$§¶§•¶ª\n");
+// printf("S%# 0qq657qfdasf$§¶§•¶ª\n");
+// printf("S%# 0q\n", 32, 33, 34);
 
 // printf("S%10.5xE\n", 45);
 // printf("S%.4xE\n", 45);

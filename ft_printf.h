@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:24:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/13 17:53:17 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:28:00 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ typedef struct s_flags
 
 typedef struct s_printf
 {
-	const char	*curr_s;
-	int			len_printed;
-	t_flags		*flags;
-	char		*parsed_flags_s;
+	char	*curr_s;
+	int		len_printed;
+	t_flags	*flags;
+	char	*parsed_flags_s;
 }	t_printf;
 
 int	ft_printf(const char *s, ...);
-
+t_printf	*ft_define_struct(const char *s);
+void	ft_flags_checker(t_printf *data);
 #endif

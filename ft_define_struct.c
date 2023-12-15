@@ -1,26 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_struct.c                                    :+:      :+:    :+:   */
+/*   ft_define_struct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:23:43 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/13 17:55:06 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:26:24 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_printf	*define_struct(const char *s)
+
+// char	*ft_strdup(const char *s1)
+// {
+// 	char	*buffer;
+// 	int		i;
+
+// 	buffer = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
+// 	if (!buffer)
+// 		return (NULL);
+// 	i = 0;
+// 	while (s1[i])
+// 	{
+// 		buffer[i] = s1[i];
+// 		i++;
+// 	}
+// 	buffer[i] = '\0';
+// 	return (buffer);
+// }
+
+t_printf	*ft_define_struct(const char *s)
 {
 	t_printf	*data;
 	t_flags		*flags;
+	char		*str;
 
+	str = ft_strdup(s);
 	data = malloc(sizeof(t_printf));
-	if (!data)
+	if (!data || !str)
 		return (NULL);
-	data->curr_s = s;
+	data->curr_s = str;
 	data->len_printed = 0;
 	flags = malloc(sizeof(t_flags));
 	if (!flags)
