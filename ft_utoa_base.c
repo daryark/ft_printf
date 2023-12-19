@@ -6,13 +6,13 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 20:18:42 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/19 20:57:38 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_base	ft_define_base(t_printf *data)
+static void	*ft_define_base(t_printf *data)
 {
 	t_base	*s_base;
 
@@ -46,7 +46,7 @@ static unsigned int	ft_num_len(unsigned int n, unsigned int b_l)
 	return (len);
 }
 
-void	ft_utoa_base(t_printf *data, unsigned int n)
+void	*ft_utoa_base(t_printf *data, unsigned int n)
 {
 	char			*buf;
 	unsigned int	len;
@@ -70,4 +70,6 @@ void	ft_utoa_base(t_printf *data, unsigned int n)
 		buf[len] = s_base->base[n % s_base->b_l];
 		n /= s_base->b_l;
 	}
+	// ft_print_num(data);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:24:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 20:17:01 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/19 20:35:43 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ t_printf		*ft_define_struct(const char *s);
 void			ft_flags_checker(t_printf *data);
 int				ft_format_checker(t_printf *data, va_list args);
 void			ft_itoa_printf(t_printf *data, int n);
-void			ft_utoa_base(unsigned int n, char f);
+void			*ft_utoa_base(t_printf *data, unsigned int n);
 void			ft_print_format(t_printf *data);
 #endif
