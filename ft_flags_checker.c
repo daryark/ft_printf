@@ -6,16 +6,14 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:02:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/15 22:11:44 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/19 20:17:08 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 #define YELLOW "\033[33m"
 #define RESET "\033[0m"
-
 
 static void	ft_width(t_printf	*data)
 {

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/15 22:13:04 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:24:10 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #define MAGENTA "\033[35m"
 #define BLUE "\033[34m"
 #define RESET "\033[0m"
-
-// data->base_arr = {"0123456789", "01234567abcdef", "01234567ABCDEF"};
 
 
 int	ft_printf(const char *s, ...)
@@ -35,7 +33,7 @@ int	ft_printf(const char *s, ...)
 		{
 			data->curr_s++;
 			ft_flags_checker(data);
-			err = ft_choose_format(data);
+			err = ft_format_checker(data, args);
 			if (err)
 				return (-1);
 		}
@@ -48,7 +46,7 @@ int	ft_printf(const char *s, ...)
 		}
 	}
 	va_end(args);
-	return (8);
+	return (data->len_printed);
 }
 
 // 
@@ -56,16 +54,32 @@ int	ft_printf(const char *s, ...)
 #include <stdio.h>
 #include <limits.h>
 
+#include <stdint.h>
+#include <inttypes.h>
+
 int    main(void)
 {
+	// int	res1;
+	// int res2;
+	// ft_printf("ft_printf: %x\n", 3434);
+	printf(".%+-7.15p.\n", 3434);
+	// printf("ft_printf: %x\n", 3434);
+	// printf("ft_printf: %x\n", 0xfff);
 	// ft_printf("S%-+90.10.20.4dE\n", 45);
 	// printf(MAGENTA"Native: S%-+90.10.20.4dE\n"RESET, 45);
 	// printf(MAGENTA"Native: %D, %x, %S,\n"RESET, 23, 53, "lasdkf");
-	ft_printf("S%-+90.10.20.4DE\n", 45);
+	// res1 = printf("S%-+30.10.20.4d%dE\n", 45);
+	// res2 = printf("S%-+30.10.20.4d%dE\n", 45, "hkljdfkljs", 45);
+	// printf("res1:%d\nres2:%d\n", res1, res2);
+
+	// ft_printf("S%-+30.10.20.4d%dE\n", 45);
+	// ft_printf("S%-+30.10.20.4d%dE\n", 45, "hkljdfkljs", 45);
 	// printf(MAGENTA"Native: S%-+90.10.20.4DE\n"RESET, 45);
 	// char	*s_test[20] = {"", " ", NULL, "hello", "hello\012newline", "hello\0nul", "hello\#flag", "nonprintables\v\f\b\t\a\\\r\'\n"};
 	// long	d_test[20] = { -1, INT_MIN, INT_MAX, 0, 2.9, 2.0, -9.9, 0xff, 010, (INT_MAX + 1), (INT_MIN - 1)}
 
+    // printf("Max unsigned int in decimal: %u\n", UINT_MAX);
+    // printf("Max unsigned int in hex: %x\n", UINT_MAX);
 // printf("S%.10xE", 45);
 // printf("S%.10.xE", 45);
 // printf("S%10.xE", 45);
