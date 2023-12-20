@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:33:02 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 19:37:14 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:07:05 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,17 @@ static int	ft_sign(int n)
 	return (1);
 }
 
-void	*ft_itoa(t_pritnf *data, int n)
+int	ft_itoa_printf(t_printf *data, int n)
 {
 	int		sign;
 	char	*buf;
 	int		len;
 
 	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	{
+		data->f_print = ft_strdup("-2147483648");
+		return (1);
+	}
 	sign = ft_sign(n);
 	if (sign < 0)
 		n *= -1;
@@ -49,7 +52,7 @@ void	*ft_itoa(t_pritnf *data, int n)
 	data->f_print_l = len;
 	buf = (char *)ft_calloc(sizeof(char), (len + 1));
 	if (!buf)
-		return (NULL);
+		return (0);
 	while (len--)
 	{
 		if (len == 0 && sign < 0)
@@ -60,5 +63,7 @@ void	*ft_itoa(t_pritnf *data, int n)
 			n /= 10;
 		}
 	}
-	data->t_print = buf;
+	data->f_print = buf;
+	ft_print_num(data);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 19:44:53 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:46:23 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	ft_utoa_base(t_printf *data, unsigned int n)
 	unsigned int	len;
 	t_base			*s_base;
 
-	printf("number: %u", n);
+	printf("number %u\n", n);
 	printf("hey");
 	len = ft_num_len(n, s_base->b_l);
+	printf("len %d\n", len);
 	data->f_print_l = len;
 	s_base = ft_define_base(data);
 	buf = (char *)ft_calloc(sizeof(char), (len + 1));

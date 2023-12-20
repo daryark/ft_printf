@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 19:44:48 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 22:05:27 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_printf(const char *s, ...)
 
 	data = ft_define_struct(s);
 	va_start(args, s);
-	while (data->curr_s)
+	while (*data->curr_s)
 	{
-		if (*(data->curr_s) == '%')
+		if (*data->curr_s == '%')
 		{
 			data->curr_s++;
 			ft_flags_checker(data);
@@ -46,6 +46,7 @@ int	ft_printf(const char *s, ...)
 		}
 	}
 	va_end(args);
+	// printf("data->len_printed %d\n", data->len_printed);
 	return (data->len_printed);
 }
 
@@ -61,7 +62,7 @@ int    main(void)
 {
 	// int	res1;
 	// int res2;
-	ft_printf("ft_printf: %x\n", 3434);
+	ft_printf("ft_printf: %-10.6d\n", 3434);
 	// printf(".%+-27.15-40p.\n", 3434);
 	// printf(".%10+d,%+10d.\n", 4, 3);
 	// printf("%030.10d\n", 89);
@@ -150,7 +151,7 @@ int    main(void)
 	// printf("flags .: %.d\n", 898);
 	// printf("flags " "20d: % 20d\n", 898);
 
-////! "-" makes alignement of the whole text from the end, space takes place before the number. So if we aligned the text to the end - the space from the end of the row is considered as start(space before the nubmer)
+////! "-" makes alignment of the whole text from the end, space takes place before the number. So if we aligned the text to the end - the space from the end of the row is considered as start(space before the nubmer)
 	// printf("flags: st%- 10dend\n", 897);
 	// printf("flags: st% -10dend\n", 897);
 	// printf("flags: st% 10dend\n", 897);

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 16:49:07 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 19:00:12 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:09:35 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,24 @@ int	ft_format_checker(t_printf *data, va_list args)
 	unsigned int i;
 
 	s = data->curr_s;
-	printf("curr: %c\n", *s);
 	if (*s == 'd' || *s == 'i' || *s == 'u' || *s == 'x'
 		|| *s == 'X' || *s == 's' || *s == 'c' || *s == '%'
 		|| *s == 'p')
 	{
-		// if (*s == 'd' || *s == 'i')
-		// 	ok = ft_itoa_printf(data, va_arg(args, int));
-		// else 
-		if (*s == 'u' || *s == 'x' || *s == 'X')
+		if (*s == 'd' || *s == 'i')
 		{
-			i = va_arg(args, unsigned int);
-			printf("args: %u\n", i);
-			ok = ft_utoa_base(data, i);
+			ok = ft_itoa_printf(data, va_arg(args, int));
+			// printf("ok: %d\n", ok);
+			// printf("data->f_print_l %d\n", data->f_print_l);
+			// printf("data->f_print %s\n", data->f_print);
 		}
+		// else 
+		// if (*s == 'u' || *s == 'x' || *s == 'X')
+		// {
+		// 	i = va_arg(args, unsigned int);
+		// 	printf("args: %u\n", i);
+		// 	ok = ft_utoa_base(data, i);
+		// }
 		// else if (*s == 'p')
 		// 	ft_print_ptr(va_arg(args, void *), &s);
 		// else if (*s == 's')
@@ -44,7 +48,9 @@ int	ft_format_checker(t_printf *data, va_list args)
 		// 	return (1);
 		if (!ok)
 			return (1);
+
 		data->curr_s++;
+		// ft_print_format(data);
 	}
 	return (0);
 }
