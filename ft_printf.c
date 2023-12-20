@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 20:58:53 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:44:48 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int    main(void)
 {
 	// int	res1;
 	// int res2;
-	// ft_printf("ft_printf: %x\n", 3434);
-	printf(".%+-7.15p.\n", 3434);
-	printf("%10+d, %+10d\n", 4, 3);
-	printf("%030.10d\n", 89);
+	ft_printf("ft_printf: %x\n", 3434);
+	// printf(".%+-27.15-40p.\n", 3434);
+	// printf(".%10+d,%+10d.\n", 4, 3);
+	// printf("%030.10d\n", 89);
 	// printf("ft_printf: %x\n", 3434);
 	// printf("ft_printf: %x\n", 0xfff);
 	// ft_printf("S%-+90.10.20.4dE\n", 45);

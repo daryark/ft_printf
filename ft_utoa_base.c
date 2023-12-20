@@ -6,38 +6,18 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 20:57:38 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:44:53 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	*ft_define_base(t_printf *data)
-{
-	t_base	*s_base;
-
-	s_base = malloc(sizeof(t_base));
-	if (!s_base)
-		return (NULL);
-	s_base->b_l = 10;
-	if (*data->curr_s == 'u')
-		s_base->base = "0123456789";
-	else
-	{
-		if (*data->curr_s == 'x')
-			s_base->base = "01234567abcdef";
-		else
-			s_base->base = "01234567ABCDEF";
-		s_base->b_l = 16;
-	}
-	return (s_base);
-}
 
 static unsigned int	ft_num_len(unsigned int n, unsigned int b_l)
 {
 	unsigned int	len;
 
 	len = 1;
+	printf("n: %u\n", n);
 	while (n >= b_l)
 	{
 		len++;
@@ -46,12 +26,14 @@ static unsigned int	ft_num_len(unsigned int n, unsigned int b_l)
 	return (len);
 }
 
-void	*ft_utoa_base(t_printf *data, unsigned int n)
+int	ft_utoa_base(t_printf *data, unsigned int n)
 {
 	char			*buf;
 	unsigned int	len;
 	t_base			*s_base;
 
+	printf("number: %u", n);
+	printf("hey");
 	len = ft_num_len(n, s_base->b_l);
 	data->f_print_l = len;
 	s_base = ft_define_base(data);
@@ -62,14 +44,16 @@ void	*ft_utoa_base(t_printf *data, unsigned int n)
 			free(s_base);
 		if (buf)
 			free (buf);
-		return (NULL);
+		return (0);
 	}
 	while (len--)
 	{
-		printf("length: %d\n", len);
+		printf("num: %c\n", s_base->base[n % s_base->b_l]);
 		buf[len] = s_base->base[n % s_base->b_l];
 		n /= s_base->b_l;
 	}
 	// ft_print_num(data);
 	return (1);
 }
+
+// "0123456789abcdef"

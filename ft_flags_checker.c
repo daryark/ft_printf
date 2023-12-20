@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:02:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 20:17:08 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:52:00 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,3 @@ void	ft_flags_checker(t_printf *data)
 	}
 	printf("RES hash:%d, space:%d, plus:%d, minus:%d, zero:%d, dot:%d, width:%d\n", data->flags->hash, data->flags->space, data->flags->plus, data->flags->minus, data->flags->zero, data->flags->dot, data->flags->width);
 }
-
-	// char	*all_flags;
-	// int		i;
-	// all_flags = "#-+ .0"
-	// while (all_flags)
-	// {
-	// 	if(data->curr_s == '#')
-	// 		flags->hash = 1;
-	// }

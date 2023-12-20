@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:24:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/19 20:35:43 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:47:12 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,18 @@ typedef struct s_printf
 	int		f_print_l;
 }	t_printf;
 
-int				ft_printf(const char *s, ...);
-t_printf		*ft_define_struct(const char *s);
-void			ft_flags_checker(t_printf *data);
-int				ft_format_checker(t_printf *data, va_list args);
-void			ft_itoa_printf(t_printf *data, int n);
-void			*ft_utoa_base(t_printf *data, unsigned int n);
-void			ft_print_format(t_printf *data);
+int			ft_printf(const char *s, ...);
+
+t_printf	*ft_define_struct(const char *s);
+t_flags		*ft_define_flags(t_printf *data);
+t_flags		*ft_reset_flags(t_flags *flags);
+void		*ft_define_base(t_printf *data);
+
+void		ft_flags_checker(t_printf *data);
+int			ft_format_checker(t_printf *data, va_list args);
+
+void		ft_itoa_printf(t_printf *data, int n);
+int			ft_utoa_base(t_printf *data, unsigned int n);
+
+void		ft_print_format(t_printf *data);
 #endif
