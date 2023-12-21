@@ -6,18 +6,11 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 03:02:33 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/21 04:02:29 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <string.h>
-
-#define MAGENTA "\033[35m"
-#define BLUE "\033[34m"
-#define RESET "\033[0m"
-
 
 int	ft_printf(const char *s, ...)
 {
@@ -36,12 +29,13 @@ int	ft_printf(const char *s, ...)
 			err = ft_format_checker(data, args);
 			if (err)
 				return (-1);
+			ft_clean_used(data); //check for leaks, //?!HOW
 		}
 		else
 		{
 			write(STDOUT_FILENO, BLUE, strlen(BLUE));  
 			write(1, data->curr_s++, 1);
-    		write(STDOUT_FILENO, RESET, strlen(RESET));
+			write(STDOUT_FILENO, RESET, strlen(RESET));
 			data->len_printed++;
 		}
 	}
@@ -49,14 +43,14 @@ int	ft_printf(const char *s, ...)
 	return (data->len_printed);
 }
 
-// 
-#include <string.h>
-#include <stdio.h>
-#include <limits.h>
-
-#include <stdint.h>
-#include <inttypes.h>
-
+//
+//
+//
+//
+//
+//
+//
+//
 int    main(void)
 {
 	//*test for d, i formats. work.
@@ -69,7 +63,8 @@ int    main(void)
 	// ft_printf("res: %d\n", res2);
 	// ft_printf("ft_printf: .%--10.6d.\n", +3434);
 
-	// ft_printf(".%+9.7d.\n", -3434);
+	ft_printf(".%+9.7d.%10.10d.\n", -3434, 239);
+	printf(".%+9.7d.%10.10d.\n", -3434, 239);
 	// printf(".%+9.7d.\n", -3434);
 	//*****************************
 

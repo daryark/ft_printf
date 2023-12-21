@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:23:43 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 17:21:43 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/21 03:48:36 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,15 @@ t_flags	*ft_reset_flags(t_flags *flags)
 	return (flags);
 }
 
-t_flags	*ft_define_flags(t_printf *data)
+void	ft_clean_used(t_printf *d)
+{
+	// free(d->f_print); //!!!what the heck with freeing it ????
+	d->f_print = NULL;
+	d->f_print_l = 0;
+	ft_reset_flags(d->flags);
+}
+
+t_flags	*ft_define_flags(void)
 {
 	t_flags		*flags;
 
@@ -46,7 +54,7 @@ t_printf	*ft_define_struct(const char *s)
 	data->len_printed = 0;
 	data->f_print = NULL;
 	data->f_print_l = 0;
-	data->flags = ft_define_flags(data);
+	data->flags = ft_define_flags();
 	if (!data->flags)
 	{
 		free(data);

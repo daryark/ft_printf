@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:02:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 02:04:50 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/21 04:02:21 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 static void	ft_width(t_printf	*d)
 {
-	if (*d->curr_s == '.')
-		d->flags->dot = ft_atoi((const char *)(d->curr_s + 1));
+	if (*(d->curr_s - 1) == '.')
+		d->flags->dot = ft_atoi((const char *)d->curr_s);
 	else
-		d->flags->width = ft_atoi((const char *)(d->curr_s + 1));
+		d->flags->width = ft_atoi((const char *)d->curr_s);
 	while (*(d->curr_s + 1) >= '0' && *(d->curr_s + 1) <= '9')
 		d->curr_s++;
 }
@@ -43,7 +43,7 @@ void	ft_flags_checker(t_printf *d)
 			d->flags->minus = 1;
 		else if (*d->curr_s == '.')
 			d->flags->dot = 1;
-		if (*(d->curr_s + 1) > '0' && *(d->curr_s + 1) <= '9')
+		else if (*d->curr_s > '0' && *d->curr_s <= '9')
 			ft_width(d);
 		d->curr_s++;
 	}
