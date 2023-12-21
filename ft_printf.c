@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 22:05:27 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/21 02:36:22 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	ft_printf(const char *s, ...)
 		}
 	}
 	va_end(args);
-	// printf("data->len_printed %d\n", data->len_printed);
 	return (data->len_printed);
 }
 
@@ -60,9 +59,15 @@ int	ft_printf(const char *s, ...)
 
 int    main(void)
 {
-	// int	res1;
-	// int res2;
-	ft_printf("ft_printf: %-10.6d\n", 3434);
+	int	res1;
+	int res2;
+	
+	res1 = ft_printf(".%+010#10.7d.\n", +3434);
+	ft_printf("res: %d\n", res1);
+	res2 = ft_printf(".%+010#10.7d.\n", +3434);
+	ft_printf("res: %d\n", res2);
+	// ft_printf("ft_printf: .%--10.6d.\n", +3434);
+
 	// printf(".%+-27.15-40p.\n", 3434);
 	// printf(".%10+d,%+10d.\n", 4, 3);
 	// printf("%030.10d\n", 89);

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:02:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 22:20:24 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/21 02:04:50 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,37 @@
 #define YELLOW "\033[33m"
 #define RESET "\033[0m"
 
-static void	ft_width(t_printf	*data)
+static void	ft_width(t_printf	*d)
 {
-	printf("s: %c\n", *data->curr_s);
-	if (*data->curr_s == '.')
-		data->flags->dot = ft_atoi((const char *)(data->curr_s + 1));
+	if (*d->curr_s == '.')
+		d->flags->dot = ft_atoi((const char *)(d->curr_s + 1));
 	else
-		data->flags->width = ft_atoi((const char *)(data->curr_s + 1));
-	while ((*data->curr_s + 1) >= '0' && (*data->curr_s + 1) <= '9')
-		data->curr_s++;
-	printf("data->s: %c\n", *data->curr_s);
+		d->flags->width = ft_atoi((const char *)(d->curr_s + 1));
+	while (*(d->curr_s + 1) >= '0' && *(d->curr_s + 1) <= '9')
+		d->curr_s++;
 }
 
-void	ft_flags_checker(t_printf *data)
+void	ft_flags_checker(t_printf *d)
 {
-	while (*data->curr_s == '#' || *data->curr_s == '+' || *data->curr_s == '-'
-		|| *data->curr_s == '.' || (*data->curr_s >= '0' && *data->curr_s <= '9'))
+	while (*d->curr_s == '+' || *d->curr_s == '-'
+		|| *d->curr_s == ' ' || *d->curr_s == '.'
+		|| *d->curr_s == '#' || (*d->curr_s >= '0' && *d->curr_s <= '9'))
 	{
-		if (*data->curr_s == '#')
-			data->flags->hash = 1;
-		else if (*data->curr_s == ' ')
-			data->flags->space = 1;
-		else if (*data->curr_s == '+')
-			data->flags->plus = 1;
-		else if (*data->curr_s == '0')
-			data->flags->zero = 1;
-		else if (*data->curr_s == '-')
-			data->flags->minus = 1;
-		else if (*data->curr_s == '.')
-			data->flags->dot = 1;
-		if ((*data->curr_s + 1) > '0' && (*data->curr_s + 1) <= '9')
-		{
-			printf("hey: %c\n", *data->curr_s);
-			ft_width(data);
-		}
-		data->curr_s++;
+		if (*d->curr_s == '#')
+			d->flags->hash = 1;
+		else if (*d->curr_s == ' ')
+			d->flags->space = 1;
+		else if (*d->curr_s == '+')
+			d->flags->plus = 1;
+		else if (*d->curr_s == '0')
+			d->flags->zero = 1;
+		else if (*d->curr_s == '-')
+			d->flags->minus = 1;
+		else if (*d->curr_s == '.')
+			d->flags->dot = 1;
+		if (*(d->curr_s + 1) > '0' && *(d->curr_s + 1) <= '9')
+			ft_width(d);
+		d->curr_s++;
 	}
-	printf("RES hash:%d, space:%d, plus:%d, minus:%d, zero:%d, dot:%d, width:%d\n", data->flags->hash, data->flags->space, data->flags->plus, data->flags->minus, data->flags->zero, data->flags->dot, data->flags->width);
+	// printf("\nRES hash:%d, space:%d, plus:%d, minus:%d, zero:%d, dot:%d, width:%d\n", d->flags->hash, d->flags->space, d->flags->plus, d->flags->minus, d->flags->zero, d->flags->dot, d->flags->width);
 }
