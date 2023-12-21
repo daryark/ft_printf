@@ -6,17 +6,21 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:45:36 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 02:35:11 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/21 03:02:42 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//? flags->zero, flags->hash
-
 //amnt of 0 to be printed before nbr
+//if nb is neg, add one more 0, but one less width space
 void	ft_len_dots(t_printf *d)
 {
+	if (d->f_print[0] == '-')
+	{
+		d->f_print_l--;
+		d->flags->width--;
+	}
 	if (d->flags->dot > d->f_print_l)
 	{
 		d->flags->dot -= d->f_print_l;
@@ -38,9 +42,6 @@ int	ft_positive_ident(t_printf *d)
 	d->flags->space = 0;
 	d->flags->plus = 0;
 	return (0);
-	// if((d->f_print[0] != '-') && (d->flags->plus || d->flags->space))
-	// 	return (1);
-	// return (0);
 }
 
 //add len_printed and if need to print extra width length " "
@@ -55,20 +56,9 @@ void	ft_total_print_l(t_printf *d)
 	else
 		d->flags->width -= (d->f_print_l + d->flags->dot + ident);
 	d->len_printed += (d->f_print_l + d->flags->dot + d->flags->width + ident);
-
-	// if (d->flags->width > (d->f_print_l + d->flags->dots + ft_positive_ident(d)))
-	// {
-	// 	d->len_printed += d->flags->width;
-	// 	d->flags->width -= (d->f_print_l + d->flags->dots + ft_positive_ident(d));
-	// }
-	// else
-	// {
-	// 	d->flags->width = 0;
-	// 	d->len_printed += (d->f_print_l + d->flags->dots + ft_positive_ident(d));
-	// }
 }
 
-void	ft_printchar(char c, int n)
+void	ft_fill_char(char c, int n)
 {
 	while (n)
 	{
@@ -77,16 +67,21 @@ void	ft_printchar(char c, int n)
 	}
 }
 
+//evrth formated according to the res, just print
 void	ft_print_num(t_printf *d)
 {
 	ft_total_print_l(d);
 	if (!d->flags->minus)
-		ft_printchar(' ', d->flags->width);
-	// printf("w: %d, p/s: %d, d: %d, n: %d, m: %d\n", d->flags->width, ft_positive_ident(d), d->flags->dot, d->f_print_l, d->flags->minus);
+		ft_fill_char(' ', d->flags->width);
 	write(1, "+", d->flags->plus);
 	write(1, " ", d->flags->space);
-	ft_printchar('0', d->flags->dot);
+	if (d->f_print[0] == '-')
+	{
+		ft_fill_char('-', 1);
+		d->f_print++;
+	}
+	ft_fill_char('0', d->flags->dot);
 	write(1, d->f_print, d->f_print_l);
 	if (d->flags->minus)
-		ft_printchar(' ', d->flags->width);
+		ft_fill_char(' ', d->flags->width);
 }
