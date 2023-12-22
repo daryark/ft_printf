@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:24:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 03:41:22 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 01:07:40 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_base
 typedef struct s_printf
 {
 	char	*curr_s;
+	char	*start_p;
 	int		len_printed;
 	t_flags	*flags;
 	char	*f_print;
@@ -61,13 +62,16 @@ t_flags		*ft_reset_flags(t_flags *flags);
 void		*ft_define_base(t_printf *data);
 
 void		ft_flags_checker(t_printf *d);
-int			ft_format_checker(t_printf *data, va_list args);
+int			ft_format_print(t_printf *data, va_list args);
 
+int			ft_print_d_i(t_printf *d, int n);
 int			ft_itoa_printf(t_printf *d, int n);
-int			ft_utoa_base(t_printf *data, unsigned int n);
+int			ft_utoa_base(t_printf *d, unsigned int n);
+void		ft_print_u_x(t_printf *d);
 
 void		ft_print_format(t_printf *data);
 void		ft_print_num(t_printf *data);
 
 void		ft_clean_used(t_printf *d);
+void		ft_clean(t_printf *d);
 #endif

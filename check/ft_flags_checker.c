@@ -6,11 +6,11 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:02:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 04:02:21 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 00:04:39 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 #define YELLOW "\033[33m"
 #define RESET "\033[0m"

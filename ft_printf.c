@@ -6,17 +6,27 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 04:02:29 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 01:33:07 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_print_arg(t_printf *d, va_list args)
+{
+	int	ok;
+
+	ft_flags_checker(d);
+	ok = ft_format_print(d, args);
+	ft_clean_used(d);
+	return (ok);
+}
+
 int	ft_printf(const char *s, ...)
 {
 	va_list		args;
 	t_printf	*data;
-	int			err;
+	int			res;
 
 	data = ft_define_struct(s);
 	va_start(args, s);
@@ -25,22 +35,19 @@ int	ft_printf(const char *s, ...)
 		if (*data->curr_s == '%')
 		{
 			data->curr_s++;
-			ft_flags_checker(data);
-			err = ft_format_checker(data, args);
-			if (err)
+			if (!ft_print_arg(data, args))
 				return (-1);
-			ft_clean_used(data); //check for leaks, //?!HOW
 		}
 		else
 		{
-			write(STDOUT_FILENO, BLUE, strlen(BLUE));  
 			write(1, data->curr_s++, 1);
-			write(STDOUT_FILENO, RESET, strlen(RESET));
 			data->len_printed++;
 		}
 	}
 	va_end(args);
-	return (data->len_printed);
+	res = data->len_printed;
+	ft_clean(data);
+	return (res);
 }
 
 //
@@ -63,13 +70,30 @@ int    main(void)
 	// ft_printf("res: %d\n", res2);
 	// ft_printf("ft_printf: .%--10.6d.\n", +3434);
 
-	ft_printf(".%+9.7d.%10.10d.\n", -3434, 239);
-	printf(".%+9.7d.%10.10d.\n", -3434, 239);
-	// printf(".%+9.7d.\n", -3434);
+	// ft_printf(".%#9.7d.%10.10i.\n", 0xff, 239);
+	// printf(".%#9.7d.%10.10i.\n", 0xff, 239);
+	// ft_printf(".%#9.7d.%10.10d.\n", 3434, 239);
+	// printf(".%#9.7d.%10.10d.\n", 3434, 239);
+	// ft_printf(".%+#-15.7d.%10.10d.\n", -3434, 239);
+	// printf(".%+#-15.7d.%10.10d.\n\n", -3434, 239);
+	// ft_printf(".%+19.7d.\n", -3434);
+	// printf(".%+19.7d.\n", -3434);
 	//*****************************
 
-
-	// printf(".%+-27.15-40p.\n", 3434);
+	// printf(".%# -15 0.8d.\n", 42);
+	// printf(".%+# 15 0.8x.\n", 42);
+	// printf(".%#+ 15 0.8u.\n", 42);
+	// ft_printf("x: .%x.\n", 42);
+	// ft_printf("X: .%X.\n", 42);
+	//*test u, x, X formats. work
+	// ft_printf("u: .%#20+ 05-10.4u.\n", 42);
+	// printf("u: .%#20+ 05-10.4u.\n", 42);
+	// ft_printf("x: .%#20+ 05-10.4x.\n", 42);
+	// printf("x: .%#20+ 05-10.4x.\n", 42);
+	// ft_printf("X: .%#20+ 05-10.4X.\n", 42);
+	// printf("X: .%#20+ 05-10.4X.\n\n", 42);
+	//*****************************
+	printf(".%+-27.15-40p.\n", 3434);
 	// printf(".%10+d,%+10d.\n", 4, 3);
 	// printf("%030.10d\n", 89);
 	// printf("ft_printf: %x\n", 3434);

@@ -6,11 +6,11 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:33:02 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 02:21:53 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 00:32:11 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static int	ft_num_len(int n, int sign)
 {
@@ -67,6 +67,5 @@ int	ft_itoa_printf(t_printf *d, int n)
 			n /= 10;
 		}
 	}
-	ft_print_num(d);
 	return (1);
 }

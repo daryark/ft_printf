@@ -6,30 +6,11 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:23:43 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/21 03:48:36 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 00:05:16 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-t_flags	*ft_reset_flags(t_flags *flags)
-{
-	flags->plus = 0;
-	flags->minus = 0;
-	flags->zero = 0;
-	flags->space = 0;
-	flags->hash = 0;
-	flags->dot = 0;
-	return (flags);
-}
-
-void	ft_clean_used(t_printf *d)
-{
-	// free(d->f_print); //!!!what the heck with freeing it ????
-	d->f_print = NULL;
-	d->f_print_l = 0;
-	ft_reset_flags(d->flags);
-}
+#include "../ft_printf.h"
 
 t_flags	*ft_define_flags(void)
 {
@@ -51,6 +32,7 @@ t_printf	*ft_define_struct(const char *s)
 	if (!data || !str)
 		return (NULL);
 	data->curr_s = str;
+	data->start_p = str;
 	data->len_printed = 0;
 	data->f_print = NULL;
 	data->f_print_l = 0;
@@ -81,5 +63,6 @@ void	*ft_define_base(t_printf *data)
 			s_base->base = "0123456789ABCDEF";
 		s_base->b_l = 16;
 	}
+	// printf("define, b_l: %u\n", s_base->b_l);
 	return (s_base);
 }

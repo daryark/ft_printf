@@ -6,18 +6,17 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/20 19:46:23 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 01:08:47 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-static unsigned int	ft_num_len(unsigned int n, unsigned int b_l)
+static unsigned int	ft_u_num_len(unsigned int n, unsigned int b_l)
 {
 	unsigned int	len;
 
 	len = 1;
-	printf("n: %u\n", n);
 	while (n >= b_l)
 	{
 		len++;
@@ -26,35 +25,28 @@ static unsigned int	ft_num_len(unsigned int n, unsigned int b_l)
 	return (len);
 }
 
-int	ft_utoa_base(t_printf *data, unsigned int n)
+int	ft_utoa_base(t_printf *d, unsigned int n)
 {
-	char			*buf;
 	unsigned int	len;
 	t_base			*s_base;
 
-	printf("number %u\n", n);
-	printf("hey");
-	len = ft_num_len(n, s_base->b_l);
-	printf("len %d\n", len);
-	data->f_print_l = len;
-	s_base = ft_define_base(data);
-	buf = (char *)ft_calloc(sizeof(char), (len + 1));
-	if (!buf || !s_base)
+	s_base = ft_define_base(d);
+	len = ft_u_num_len(n, s_base->b_l);
+	d->f_print_l = len;
+	d->f_print = (char *)ft_calloc(sizeof(char), (len + 1));
+	if (!d->f_print || !s_base)
 	{
 		if (s_base)
 			free(s_base);
-		if (buf)
-			free (buf);
+		if (d->f_print)
+			free (d->f_print);
 		return (0);
 	}
 	while (len--)
 	{
-		printf("num: %c\n", s_base->base[n % s_base->b_l]);
-		buf[len] = s_base->base[n % s_base->b_l];
+		d->f_print[len] = s_base->base[n % s_base->b_l];
 		n /= s_base->b_l;
 	}
-	// ft_print_num(data);
+	ft_print_u_x(d);
 	return (1);
 }
-
-// "0123456789abcdef"
