@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:23:43 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/22 00:05:16 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/23 00:41:18 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void	*ft_define_base(t_printf *data)
 		s_base->base = "0123456789";
 	else
 	{
-		if (*data->curr_s == 'x')
-			s_base->base = "0123456789abcdef";
-		else
+		if (*data->curr_s == 'X')
 			s_base->base = "0123456789ABCDEF";
+		else
+			s_base->base = "0123456789abcdef";
 		s_base->b_l = 16;
 	}
-	// printf("define, b_l: %u\n", s_base->b_l);
 	return (s_base);
 }

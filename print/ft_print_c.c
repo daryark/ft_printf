@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_reset.c                                      :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 20:04:07 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/23 03:26:47 by dyarkovs         ###   ########.fr       */
+/*   Created: 2023/12/23 02:42:01 by dyarkovs          #+#    #+#             */
+/*   Updated: 2023/12/23 03:27:02 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-t_flags	*ft_reset_flags(t_flags *flags)
+void	ft_set_value_c(t_printf *d, char *c)
 {
-	flags->plus = 0;
-	flags->minus = 0;
-	flags->zero = 0;
-	flags->space = 0;
-	flags->hash = 0;
-	flags->dot = 0;
-	return (flags);
+	if (*d->curr_s == '%')
+		d->f_print = d->curr_s;
+	else
+		d->f_print = c;
+	d->f_print_l = 1;
 }
 
-void	ft_reset_param(t_printf *d)
+int	ft_print_c(t_printf *d, int c)
 {
-	d->f_print = NULL;
-	d->f_print_l = 0;
-}
-
-void	ft_clean_used(t_printf *d)
-{
-	ft_reset_flags(d->flags);
-	if (d->f_print)
-		free(d->f_print);
+	ft_set_value_c(d, (char *)&c);
+	ft_print_num(d);
 	ft_reset_param(d);
-}
-
-void	ft_clean(t_printf *d)
-{
-	free(d->start_p);
-	free(d->flags);
-	free(d);
+	return (1);
 }

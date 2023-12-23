@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:45:36 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/22 01:28:42 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/23 04:21:50 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,28 @@
 //if nb is neg, add one more 0, but one less width space
 void	ft_len_dots(t_printf *d)
 {
-	if (d->f_print[0] == '-')
+	if (d->f_print[0] == '-' && (*d->curr_s == 'd' || *d->curr_s == 'i'))
 	{
 		d->f_print_l--;
 		d->flags->width--;
 	}
-	if (d->flags->dot > d->f_print_l)
+	if (*d->curr_s == 's')
 	{
-		d->flags->dot -= d->f_print_l;
+		if (d->flags->dot < d->f_print_l)
+			d->f_print_l = d->flags->dot;
+		d->flags->dot = 0;
 	}
+	else if (d->flags->dot > d->f_print_l
+		&& *d->curr_s != 'c' && *d->curr_s != '%')
+		d->flags->dot -= d->f_print_l;
 	else
 		d->flags->dot = 0;
 }
 
 int	ft_hash_amnt(t_printf *d)
 {
-	if ((*d->curr_s == 'x' || *d->curr_s == 'X') && d->flags->hash)
+	if (((*d->curr_s == 'x' || *d->curr_s == 'X') && d->flags->hash)
+		|| *d->curr_s == 'p')
 		return (2);
 	else
 		d->flags->hash = 0;
@@ -75,34 +81,3 @@ void	ft_fill_char(char c, int n)
 		n--;
 	}
 }
-
-//evrth formated according to the res, just print
-void	ft_print_num(t_printf *d)
-{
-	int	i;
-
-	i = 0;
-	ft_total_print_l(d);
-	if (!d->flags->minus)
-		ft_fill_char(' ', d->flags->width);
-	write(1, "+", d->flags->plus);
-	write(1, " ", d->flags->space);
-	if (d->f_print[i] == '-')
-	{
-		write(1, "-", 1);
-		i++;
-	}
-	if (d->flags->hash)
-	{
-		if (*d->curr_s == 'x')
-			write(1, "0x", 2);
-		else
-			write(1, "0X", 2);
-	}
-	ft_fill_char('0', d->flags->dot);
-	write(1, &d->f_print[i], d->f_print_l);
-	if (d->flags->minus)
-		ft_fill_char(' ', d->flags->width);
-}
-//iterator is needed to not move the start pointer in case of negative number,
-//cause need its address to free string.

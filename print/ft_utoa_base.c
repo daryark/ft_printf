@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/22 01:08:47 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/22 18:46:38 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_utoa_base(t_printf *d, unsigned int n)
 		d->f_print[len] = s_base->base[n % s_base->b_l];
 		n /= s_base->b_l;
 	}
+	free(s_base);
 	ft_print_u_x(d);
 	return (1);
 }

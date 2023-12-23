@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS =	ft_printf.c	utils/struct.c	utils/clean_reset.c\
 		check/ft_flags_checker.c	check/ft_format_checker.c \
 		print/ft_itoa_printf.c	print/ft_utoa_base.c	\
-		print/ft_print_format.c
+		print/ft_print_format.c	print/ft_print_p.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_NAME = libft.a

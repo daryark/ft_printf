@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_u_x.c                                     :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 23:11:52 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/22 18:46:28 by dyarkovs         ###   ########.fr       */
+/*   Created: 2023/12/22 23:43:53 by dyarkovs          #+#    #+#             */
+/*   Updated: 2023/12/23 03:15:06 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_print_u_x(t_printf *d)
+int	ft_print_ptr(t_printf *d, void *p)
 {
-	ft_print_num(d);
+	ft_utoa_base(d, (unsigned int)p);
+	return (0);
 }

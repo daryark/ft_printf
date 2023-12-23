@@ -6,35 +6,35 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 16:49:07 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/22 00:38:39 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/23 03:51:47 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_format_print(t_printf *data, va_list args)
+int	ft_format_print(t_printf *d, va_list args)
 {
 	char	*s;
 	int		ok;
 
-	s = data->curr_s;
+	s = d->curr_s;
 	ok = 0;
 	if (*s == 'd' || *s == 'i' || *s == 'u' || *s == 'x'
 		|| *s == 'X' || *s == 's' || *s == 'c' || *s == '%'
 		|| *s == 'p')
 	{
 		if (*s == 'd' || *s == 'i')
-			ok = ft_print_d_i(data, va_arg(args, int));
+			ok = ft_print_d_i(d, va_arg(args, int));
 		else if (*s == 'u' || *s == 'x' || *s == 'X')
-			ok = ft_utoa_base(data, va_arg(args, unsigned int));
-		// else if (*s == 'p')
-		// 	ft_print_ptr(va_arg(args, void *), &s);
-		// else if (*s == 's')
-		// 	data->print = va_arg(args, char *);
-		// else if (*s == 'c' || *s == '%')
-		// 	data->print = va_arg(args, char);
+			ok = ft_utoa_base(d, va_arg(args, unsigned int));
+		else if (*s == 'p')
+			ok = ft_print_ptr(d, va_arg(args, void *));
+		else if (*s == 'c' || *s == '%')
+			ok = ft_print_c(d, va_arg(args, int));
+		else if (*s == 's')
+			ok = ft_print_s(d, va_arg(args, char *));
 		if (ok)
-			data->curr_s++;
+			d->curr_s++;
 	}
 	return (ok);
 }
