@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 23:43:53 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/23 03:15:06 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/23 04:50:07 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_print_ptr(t_printf *d, void *p)
 {
-	ft_utoa_base(d, (unsigned int)p);
+	if (ft_utoa_base(d, (unsigned int)p));
+		return (1);
 	return (0);
 }

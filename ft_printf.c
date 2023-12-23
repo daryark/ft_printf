@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/23 04:32:22 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/23 04:50:15 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,23 @@ int	ft_printf(const char *s, ...)
 int    main(void)
 {
 	//*test for d, i formats. work.
-	// int	res1;
-	// int res2;
+	int	res1;
+	int res2;
 	
-	// res1 = ft_printf(".%+010#10.7d.\n", +3434);
-	// ft_printf("res: %d\n", res1);
-	// res2 = ft_printf(".%+010#10.7d.\n", +3434);
-	// ft_printf("res: %d\n", res2);
-	// ft_printf("ft_printf: .%--10.6d.\n", +3434);
+	res1 = ft_printf(".%+010#10.7d.\n", +3434);
+	ft_printf("res: %d\n", res1);
+	res2 = ft_printf(".%+010#10.7d.\n", +3434);
+	ft_printf("res: %d\n", res2);
+	ft_printf("ft_printf: .%--10.6d.\n", +3434);
 	
-	// ft_printf(MAGENTA".%#9.7d.%10.10i.\n", 0xff, 239);
-	// printf(".%#9.7d.%10.10i.\n\n", 0xff, 239);
-	// ft_printf(".%#9.7d.%10.10d.\n", 3434, 239);
-	// printf(".%#9.7d.%10.10d.\n\n", 3434, 239);
-	// ft_printf(".%-12.7d.%+#-15.7d.\n", -3434, 239);
-	// printf(".%-12.7d.%+#-15.7d.\n\n", -3434, 239);
-	// ft_printf(".%+19.7d.\n", -3434);
-	// printf(".%+19.7d.\n\n", -3434);
+	ft_printf(MAGENTA".%#9.7d.%10.10i.\n", 0xff, 239);
+	printf(".%#9.7d.%10.10i.\n\n", 0xff, 239);
+	ft_printf(".%#9.7d.%10.10d.\n", 3434, 239);
+	printf(".%#9.7d.%10.10d.\n\n", 3434, 239);
+	ft_printf(".%-12.7d.%+#-15.7d.\n", -3434, 239);
+	printf(".%-12.7d.%+#-15.7d.\n\n", -3434, 239);
+	ft_printf(".%+19.7d.\n", -3434);
+	printf(".%+19.7d.\n\n", -3434);
 	
 	//*****************************
 
@@ -88,34 +88,34 @@ int    main(void)
 	// ft_printf("X: .%X.\n", 42);
 	//*test u, x, X formats. work
 	
-	// ft_printf(BLUE"u: .%#20+ 05-10.4u.\n", 42);
-	// printf("u: .%#20+ 05-10.4u.\n\n", 42);
-	// ft_printf("x: .%#20+ 05-10.4x.\n", 42);
-	// printf("x: .%#20+ 05-10.4x.\n\n", 42);
-	// ft_printf("X: .%#20+ 05-10.4X.\n", 42);
-	// printf("X: .%#20+ 05-10.4X.\n\n", 42);
+	ft_printf(BLUE"u: .%#20+ 05-10.4u.\n", 42);
+	printf("u: .%#20+ 05-10.4u.\n\n", 42);
+	ft_printf("x: .%#20+ 05-10.4x.\n", 42);
+	printf("x: .%#20+ 05-10.4x.\n\n", 42);
+	ft_printf("X: .%#20+ 05-10.4X.\n", 42);
+	printf("X: .%#20+ 05-10.4X.\n\n", 42);
 
 	//*****************************
 
 	//*pointers
-	// ft_printf(YELLOW".%#+-27.15-20p.\n\n", "Ajhgj");
-	// printf(".%#+-27.15-20p.\n\n", "Ajhgj");
-	// ft_printf(".%#+-27.15-20p.\n\n", 3434);
-	// printf(".%#+-27.15-20p.\n\n", 3434);
-	// ft_printf(".%p.\n\n", 3434);
-	// printf(".%p.\n\n", 3434);
-	// ft_printf(".%p.\n\n", "Gjhgj");
-	// printf(".%p.\n\n", "Gjhgj");
+	ft_printf(YELLOW".%#+-27.15-20p.\n\n", "Ajhgj");
+	printf(".%#+-27.15-20p.\n\n", "Ajhgj");
+	ft_printf(".%#+-27.15-20p.\n\n", 3434);
+	printf(".%#+-27.15-20p.\n\n", 3434);
+	ft_printf(".%p.\n\n", 3434);
+	printf(".%p.\n\n", 3434);
+	ft_printf(".%p.\n\n", "Gjhgj");
+	printf(".%p.\n\n", "Gjhgj");
 	//*
 
 
-	ft_printf(YELLOW".%#+015.10-20s.\n\n", "Lorem ipsum dolor");
-	printf(YELLOW".%#+015.10-20s.\n\n", "Lorem ipsum dolor");
+	ft_printf(BLUE".%#+015.10-20s.\n\n", "Lorem ipsum dolor");
+	printf(".%#+015.10-20s.\n\n", "Lorem ipsum dolor");
 
-	// ft_printf(".%#+027.0 -020%%.\n\n");
-	// printf(".%#+027.0 -020%%.\n\n");
-	// ft_printf(".%#+027.0 -020c.\n\n", 'z');
-	// printf(".%#+027.0 -020c.\n\n", 'z');
+	ft_printf(MAGENTA".%#+027.0 -020%.\n\n");
+	printf(".%#+027.0 -020%.\n\n");
+	ft_printf(YELLOW".%#+027.0 -020c.\n\n", 'z');
+	printf(".%#+027.0 -020c.\n\n" RESET, 'z');
 	// printf(".%#+027.0 020c.\n\n", 'z');
 	// printf(".%#+027.0 020%.\n\n");
 	// printf(".%#+027.0 -020%c.\n\n", 'z');
