@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 17:31:58 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:55:29 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,18 @@ void	ft_utoa_base(unsigned long long n, t_base *b)
 		ft_utoa_base((n / b->b_l), b);
 		ft_utoa_base((n % b->b_l), b);
 	}
+}
+
+int	ft_print_digits(t_printf *d, unsigned long long n)
+{
+	t_base	*s_base;
+
+	s_base = ft_define_base(d);
+	if (!s_base)
+		return (0);
+	d->f_print_l += ft_u_num_len(n, s_base->b_l);
+	ft_utoa_base(n, s_base);
+	free(s_base);
+	d->len_printed += d->f_print_l;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:24:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 17:30:14 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:49:04 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			ft_print_ptr(t_printf *d, unsigned long long p);
 int			ft_print_c(t_printf *d, int c);
 int			ft_print_s(t_printf *d, char *s);
 
+int	ft_print_digits(t_printf *d, unsigned long long n);
 void		ft_print_out(t_printf *d);
 
 void		ft_total_print_l(t_printf *d);

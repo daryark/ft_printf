@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 16:49:07 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 17:28:08 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:23:18 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	ft_format_checker(t_printf *d, va_list args)
 	{
 		if (*s == 'd' || *s == 'i')
 			ok = ft_print_d_i(d, va_arg(args, int));
-		else 
-		if (*s == 'u' || *s == 'x' || *s == 'X')
+		else if (*s == 'u' || *s == 'x' || *s == 'X')
 			ok = ft_print_u_x(d, va_arg(args, unsigned int));
 		else if (*s == 'p')
 			ok = ft_print_ptr(d, va_arg(args, unsigned long long));

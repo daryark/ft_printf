@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 01:40:51 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/25 22:25:19 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:53:55 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_hash_ident(t_printf *d)
 			write(1, "0x", 2);
 		else if (*d->curr_s == 'X')
 			write(1, "0X", 2);
+		d->len_printed += 2;
 	}
 }
 
