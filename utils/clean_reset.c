@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 20:04:07 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/23 03:26:47 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/24 01:16:53 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_flags	*ft_reset_flags(t_flags *flags)
 	flags->space = 0;
 	flags->hash = 0;
 	flags->dot = 0;
+	flags->negative = 0;
 	return (flags);
 }
 

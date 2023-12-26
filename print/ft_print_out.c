@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   ft_print_out.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 01:40:51 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/23 04:32:04 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/25 22:25:19 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_hash_ident(t_printf *d)
 {
-	if (d->flags->hash || *d->curr_s == 'p')
+	if (ft_hash_amnt(d))
 	{
 		if (*d->curr_s == 'x' || *d->curr_s == 'p')
 			write(1, "0x", 2);
@@ -24,11 +24,8 @@ void	ft_hash_ident(t_printf *d)
 }
 
 //evrth formated according to the res, just print
-void	ft_print_num(t_printf *d)
+void	ft_print_out(t_printf *d)
 {
-	int	i;
-
-	i = 0;
 	ft_total_print_l(d);
 	if (!d->flags->minus)
 	{
@@ -39,14 +36,12 @@ void	ft_print_num(t_printf *d)
 	}
 	write(1, "+", d->flags->plus);
 	write(1, " ", d->flags->space);
-	if (d->f_print[i] == '-')
-	{
+	if (d->flags->negative && (*d->curr_s == 'd' || *d->curr_s == 'i'))
 		write(1, "-", 1);
-		i++;
-	}
 	ft_hash_ident(d);
 	ft_fill_char('0', d->flags->dot);
-	write(1, &d->f_print[i], d->f_print_l);
+	write(1, d->f_print, d->f_print_l);
+	// ft_format_checker(d, args);
 	if (d->flags->minus)
 		ft_fill_char(' ', d->flags->width);
 }

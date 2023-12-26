@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:23:43 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/23 00:41:18 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/24 17:44:21 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_printf	*ft_define_struct(const char *s)
 	return (data);
 }
 
-void	*ft_define_base(t_printf *data)
+void	*ft_define_base(t_printf *d)
 {
 	t_base	*s_base;
 
@@ -53,11 +53,11 @@ void	*ft_define_base(t_printf *data)
 	if (!s_base)
 		return (NULL);
 	s_base->b_l = 10;
-	if (*data->curr_s == 'u')
+	if (*d->curr_s == 'u' || *d->curr_s == 'i' || *d->curr_s == 'd')
 		s_base->base = "0123456789";
 	else
 	{
-		if (*data->curr_s == 'X')
+		if (*d->curr_s == 'X')
 			s_base->base = "0123456789ABCDEF";
 		else
 			s_base->base = "0123456789abcdef";

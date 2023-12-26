@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:02:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/22 00:04:39 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/23 22:45:20 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,4 @@ void	ft_flags_checker(t_printf *d)
 			ft_width(d);
 		d->curr_s++;
 	}
-	// printf("\nRES hash:%d, space:%d, plus:%d, minus:%d, zero:%d, dot:%d, width:%d\n", d->flags->hash, d->flags->space, d->flags->plus, d->flags->minus, d->flags->zero, d->flags->dot, d->flags->width);
 }
