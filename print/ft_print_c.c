@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 02:42:01 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 04:44:03 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:03:05 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 int	ft_print_c(t_printf *d, int c)
 {
-		if (*d->curr_s == '%')
+	if (*d->curr_s == '%')
 		write(1, "%", 1);
 	else
 		write(1, &c, 1);

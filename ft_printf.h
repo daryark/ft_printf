@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:24:39 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 02:30:45 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:30:14 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int			ft_format_checker(t_printf *d, va_list args);
 
 int			ft_print_d_i(t_printf *d, int n);
 // int			ft_utoa_base(t_printf *d, unsigned int n);
-void		ft_utoa_base(unsigned long n, t_base *b);
+void		ft_utoa_base(unsigned long long n, t_base *b);
 // void		ft_print_u_x(t_printf *d);
-unsigned int	ft_u_num_len(unsigned int n, unsigned int b_l);
+unsigned int	ft_u_num_len(unsigned long long n, unsigned int b_l);
 int	ft_print_u_x(t_printf *d, unsigned int n);
 void	ft_hash_ident(t_printf *d);
 int	ft_hash_amnt(t_printf *d);
-int			ft_print_ptr(t_printf *d, void *p);
+int			ft_print_ptr(t_printf *d, unsigned long long p);
 int			ft_print_c(t_printf *d, int c);
 int			ft_print_s(t_printf *d, char *s);
 
@@ -77,4 +77,5 @@ t_flags		*ft_reset_flags(t_flags *flags);
 void		ft_reset_param(t_printf *d);
 void		ft_clean_used(t_printf *d);
 void		ft_clean(t_printf *d);
+
 #endif

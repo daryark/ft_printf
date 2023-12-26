@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 05:27:19 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:23:57 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,20 @@ int	ft_printf(const char *s, ...)
 
 // #include <limits.h>
 
-int	main(void)
-{
-	int res1;
-	int res2;
-	int res3;
-	int res4;
-	char *s = "";
+// int	main(void)
+// {
+// 	int res1;
+// 	int res2;
+// 	int res3;
+// 	int res4;
+// 	char *s = "";
 
-	// ft_printf("%%%c", 'x');
-	res1 = printf(".%p.\n", NULL);
-	res2 = ft_printf(".%p.\n", NULL);
-	res3 = printf(".%p.\n", &s);
-	res4 = ft_printf(".%p.\n", &s);
-	printf("res1: %d\n, res2: %d\n, res3: %d\n, res4: %d\n", res1, res2, res3, res4);
+// 	ft_printf("%%%c\n", 'x');
+// 	res1 = printf(".%p.\n", NULL);
+// 	res2 = ft_printf(".%p.\n", NULL);
+// 	res3 = printf(".%p.\n", &s);
+// 	res4 = ft_printf(".%p.\n", &s);
+// 	printf("res1: %d\n, res2: %d\n, res3: %d\n, res4: %d\n", res1, res2, res3, res4);
 // // 	int var1;
 // // 	int var2;
 // // 	int var3;
@@ -192,5 +192,5 @@ int	main(void)
 // // // // // 	// printf("%")
 // // // // // 	// printf(".%#.3 30-+0s, %s, %s, %s.\n", "hello", "", NULL, "-");
 // // // // // 	// ft_printf(".%#.3 30-+0s, %s, %s.\n", "hello", " - ", NULL, "");
-	return (0);
-}
+// 	return (0);
+// }

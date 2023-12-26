@@ -6,13 +6,13 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 18:09:30 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 02:30:32 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:31:58 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-unsigned int	ft_u_num_len(unsigned int n, unsigned int b_l)
+unsigned int	ft_u_num_len(unsigned long long n, unsigned int b_l)
 {
 	unsigned int	len;
 
@@ -25,7 +25,7 @@ unsigned int	ft_u_num_len(unsigned int n, unsigned int b_l)
 	return (len);
 }
 
-void	ft_utoa_base(unsigned long n, t_base *b)
+void	ft_utoa_base(unsigned long long n, t_base *b)
 {
 	if (n < b->b_l)
 		write(1, &b->base[n], 1);

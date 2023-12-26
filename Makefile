@@ -22,6 +22,8 @@ RED = \033[0;31m
 RESET_COLOR = \033[0m
 
 
+bonus:	all
+
 all: $(NAME)
 
 makelibft:
