@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:23:43 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/24 17:44:21 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:11:14 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_printf	*ft_define_struct(const char *s)
 	data->len_printed = 0;
 	data->f_print = NULL;
 	data->f_print_l = 0;
+	data->err = 0;
 	data->flags = ft_define_flags();
 	if (!data->flags)
 	{

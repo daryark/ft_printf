@@ -6,13 +6,13 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:26:49 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 19:54:59 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:10:11 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_print_d_i(t_printf *d, int n)
+void	ft_print_d_i(t_printf *d, int n)
 {
 	long	nb;
 
@@ -24,5 +24,5 @@ int	ft_print_d_i(t_printf *d, int n)
 		d->f_print_l += 1;
 		nb *= -1;
 	}
-	return (ft_print_digits(d, (unsigned long long)nb));
+	ft_print_digits(d, (unsigned long long)nb);
 }

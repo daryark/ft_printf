@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:45:36 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/25 23:11:50 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:38:25 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 //amnt of 0 to be printed before nbr
 //if nb is neg, add one more 0, but one less width space
+		// d->f_print_l--;
 void	ft_len_dots(t_printf *d)
 {
-	// if (d->f_print[0] == '-' && (*d->curr_s == 'd' || *d->curr_s == 'i'))
-	// {
-	// 	d->f_print_l--;
-	// 	d->flags->width--;
-	// }
+	if (d->flags->negative && (*d->curr_s == 'd' || *d->curr_s == 'i'))
+		d->flags->width--;
 	if (*d->curr_s == 's')
 	{
 		if (d->flags->dot < d->f_print_l)
@@ -47,13 +45,13 @@ int	ft_hash_amnt(t_printf *d)
 //if need to print + or " " before nbr
 int	ft_positive_ident(t_printf *d)
 {
-	// if (d->f_print[0] != '-' && (*d->curr_s == 'd' || *d->curr_s == 'i'))
-	// {
-	// 	if (d->flags->plus)
-	// 		d->flags->space = 0;
-	// 	if (d->flags->plus || d->flags->space)
-	// 		return (1);
-	// }
+	if (d->flags->negative != '-' && (*d->curr_s == 'd' || *d->curr_s == 'i'))
+	{
+		if (d->flags->plus)
+			d->flags->space = 0;
+		if (d->flags->plus || d->flags->space)
+			return (1);
+	}
 	d->flags->space = 0;
 	d->flags->plus = 0;
 	return (ft_hash_amnt(d));
@@ -64,18 +62,13 @@ void	ft_total_print_l(t_printf *d)
 {
 	int	ident;
 
-	printf("\nwidth: %d\n", d->flags->width);
 	ident = ft_positive_ident(d);
 	ft_len_dots(d);
-	printf("\nlen: %d\n", d->f_print_l);
 	if (d->flags->width <= (d->f_print_l + d->flags->dot + ident))
 		d->flags->width = 0;
 	else
 		d->flags->width -= (d->f_print_l + d->flags->dot + ident);
-	printf("len_printed: %d\n", d->len_printed);
-	printf("d->f_print_l + d->flags->dot + d->flags->width + ident: %d, %d, %d, %d\n", d->f_print_l, d->flags->dot, d->flags->width, ident);
 	d->len_printed += (d->f_print_l + d->flags->dot + d->flags->width + ident);
-	printf("len_printed: %d.\n", d->len_printed);
 }
 
 void	ft_fill_char(char c, int n)

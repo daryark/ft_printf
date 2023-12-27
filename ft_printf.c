@@ -6,20 +6,18 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 13:23:57 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/27 01:08:22 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_arg(t_printf *d, va_list args)
+static void	ft_print_arg(t_printf *d, va_list args)
 {
-	int	ok;
-
+	d->curr_s++;
 	ft_flags_checker(d);
-	ok = ft_format_checker(d, args);
+	ft_format_checker(d, args);
 	ft_clean_used(d);
-	return (ok);
 }
 
 int	ft_printf(const char *s, ...)
@@ -35,11 +33,7 @@ int	ft_printf(const char *s, ...)
 	while (*data->curr_s)
 	{
 		if (*data->curr_s == '%')
-		{
-			data->curr_s++;
-			if (!ft_print_arg(data, args))
-				return (-1);
-		}
+			ft_print_arg(data, args);
 		else
 		{
 			write(1, data->curr_s++, 1);
@@ -47,6 +41,8 @@ int	ft_printf(const char *s, ...)
 		}
 	}
 	va_end(args);
+	if (data->err)
+		return (-1);
 	res = data->len_printed;
 	ft_clean(data);
 	return (res);
@@ -56,6 +52,14 @@ int	ft_printf(const char *s, ...)
 
 // int	main(void)
 // {
+	// int res = printf("%c\n", '\0');
+	// int res2 = ft_printf("%c\n", '\0');
+	// int res = printf("%s\n");
+	// int res2 = ft_printf("%s\n");
+	// printf("res1: %d, res2: %d\n", res, res2);
+	// printf("formats: %d\n, %s\n, %c\n, %i\n, %p\n, %u\n, %x\n, %X\n, %%\n", 0, "", '\0', 34, (void *)-989, 430483948, 42, 32);
+	// printf("my tests\n");
+	// ft_printf("formats: %d\n, %s\n, %c\n, %i\n, %p\n, %u\n, %x\n, %X\n, %%\n", 0, "", '\0', 34, (void *)-989, 430483948, 42, 32);
 // 	int res1;
 // 	int res2;
 // 	int res3;

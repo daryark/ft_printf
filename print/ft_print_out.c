@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 01:40:51 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/26 19:53:55 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:41:50 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_print_out(t_printf *d)
 	ft_hash_ident(d);
 	ft_fill_char('0', d->flags->dot);
 	write(1, d->f_print, d->f_print_l);
-	// ft_format_checker(d, args);
 	if (d->flags->minus)
 		ft_fill_char(' ', d->flags->width);
 }
