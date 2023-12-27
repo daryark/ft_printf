@@ -12,7 +12,7 @@ SRCS =	ft_printf.c \
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_NAME = libft.a
-LIBFT_DIR = ./libft
+LIBFT_DIR = ./1_libft
 
 
 GREEN = \033[0;32m
