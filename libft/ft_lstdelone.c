@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 02:28:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/06 02:37:57 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2024/01/21 21:35:12 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	del(lst->content);
+	del(lst->cont);
 	free(lst);
 }

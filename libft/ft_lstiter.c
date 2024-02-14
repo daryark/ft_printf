@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 03:20:48 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/06 03:24:45 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2024/01/21 21:35:12 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)
 	{
-		f(lst->content);
+		f(lst->cont);
 		lst = lst->next;
 	}
 }

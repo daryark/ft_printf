@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 03:26:42 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/08 15:06:44 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2024/01/21 21:35:12 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;
 	t_list	*output_l;
-	void	*content;
+	void	*cont;
 
 	output_l = NULL;
 	if (!lst || !f || !del)
 		return (NULL);
 	while (lst)
 	{
-		content = f(lst->content);
-		new_node = ft_lstnew(content);
+		cont = f(lst->cont);
+		new_node = ft_lstnew(cont);
 		if (!new_node)
 		{
-			del(content);
+			del(cont);
 			ft_lstclear(&output_l, del);
 			return (NULL);
 		}
@@ -42,4 +42,4 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 //each single el need to be passed on one iteration)
 
 // del: The address of the function used to delete
-// the content of a node if needed.
+// the cont of a node if needed.
