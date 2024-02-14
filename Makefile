@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS =	ft_printf.c \
 		utils/struct.c	utils/clean_reset.c\
 		check/ft_format_checker.c \
+		check/ft_flags_checker.c \
 		print/ft_print_digits.c	\
 		print/ft_print_p.c \
 		print/ft_print_c.c	print/ft_print_d_i.c \
@@ -21,7 +22,7 @@ RED = \033[0;31m
 RESET_COLOR = \033[0m
 
 
-# bonus:	all
+bonus:	all
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2023/12/27 19:49:46 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2024/02/14 23:41:59 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static void	ft_print_arg(t_printf *d, va_list args)
 {
 	d->curr_s++;
+
+	ft_flags_checker(d);
 	ft_format_checker(d, args);
 	ft_clean_used(d);
 }
