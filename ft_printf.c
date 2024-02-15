@@ -6,13 +6,13 @@
 /*   By: dyarkovs <dyarkovs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:34:56 by dyarkovs          #+#    #+#             */
-/*   Updated: 2024/02/14 23:41:59 by dyarkovs         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:20:19 by dyarkovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_print_arg(t_printf *d, va_list args)
+void	ft_print_arg(t_printf *d, va_list args)
 {
 	d->curr_s++;
 

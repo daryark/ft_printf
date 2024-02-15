@@ -1,4 +1,5 @@
 NAME = libftprintf.a
+NAME_C = printf
 
 CFLAGS = -Wall -Wextra -Werror
 
